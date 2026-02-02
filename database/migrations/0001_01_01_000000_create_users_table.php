@@ -11,22 +11,35 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // TABLA DE USUARIOS PRINCIPAL
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            
+            // --- CAMPOS PERSONALIZADOS ---
+            $table->string('phone')->nullable();
+            $table->string('institution')->nullable();
+            $table->string('address')->nullable();
+            $table->string('role')->default('student');
+            $table->integer('total_points')->default(0);
+            $table->string('avatar')->nullable();
+            // -----------------------------
+
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
 
+        // TABLA PARA RESTABLECER CONTRASEÑAS
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });
 
+        // TABLA PARA MANEJO DE SESIONES (Requerida por tu configuración actual)
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->foreignId('user_id')->nullable()->index();
