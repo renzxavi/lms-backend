@@ -2,111 +2,84 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Seeder;
 use App\Models\Exercise;
 use App\Models\Lesson;
-use Illuminate\Database\Seeder;
 
 class ExerciseSeeder extends Seeder
 {
     public function run(): void
     {
+        // Crear lección
         $lesson1 = Lesson::create([
-            'title' => 'Introducción a la Programación',
-            'description' => 'Aprende los conceptos básicos de programación con bloques',
+            'title' => 'Introducción a la programación',
+            'description' => 'Conceptos básicos de programación con bloques',
             'order' => 1,
         ]);
 
+        // Toolbox por defecto
+        $defaultToolbox = json_encode([
+            'logic',
+            'loops',
+            'math',
+            'text',
+            'variables'
+        ]);
+
+        // Crear ejercicios
         Exercise::create([
-            'lesson_id' => $lesson1->id,
-            'title' => 'Suma Básica',
-            'description' => 'Aprende a sumar dos números',
-            'instructions' => 'Crea un bloque que sume 2 + 3 y obtenga como resultado 5',
-            'difficulty' => 'beginner',
-            'toolbox' => [
-                'kind' => 'flyoutToolbox',
-                'contents' => [
-                    ['kind' => 'block', 'type' => 'math_number'],
-                    ['kind' => 'block', 'type' => 'math_arithmetic'],
-                ],
-            ],
-            'expected_result' => '5',
-            'hints' => [
-                'Usa el bloque de número para crear el 2',
-                'Usa otro bloque de número para crear el 3',
-                'Usa el bloque de operación matemática (+) para sumarlos',
-            ],
+            'title' => 'Hola Mundo con Bloques',
+            'description' => 'Crea tu primer programa usando bloques que imprima "Hola Mundo"',
+            'instructions' => 'Arrastra el bloque imprimir y escribe el texto "Hola Mundo".',
+            'toolbox' => $defaultToolbox,
+            'expected_result' => 'Hola Mundo',
+            'difficulty' => 'easy',
             'points' => 10,
-            'order' => 1,
+            'lesson_id' => $lesson1->id,
         ]);
 
         Exercise::create([
-            'lesson_id' => $lesson1->id,
-            'title' => 'Multiplicación',
-            'description' => 'Aprende a multiplicar números',
-            'instructions' => 'Multiplica 4 × 5 para obtener 20',
-            'difficulty' => 'beginner',
-            'toolbox' => [
-                'kind' => 'flyoutToolbox',
-                'contents' => [
-                    ['kind' => 'block', 'type' => 'math_number'],
-                    ['kind' => 'block', 'type' => 'math_arithmetic'],
-                ],
-            ],
-            'expected_result' => '20',
-            'hints' => [
-                'Necesitas dos bloques de números: 4 y 5',
-                'Usa el bloque de operación matemática',
-                'Cambia la operación a multiplicación (×)',
-            ],
+            'title' => 'Suma de dos números',
+            'description' => 'Usa bloques para sumar dos números y mostrar el resultado',
+            'instructions' => 'Crea dos variables, súmalas y muestra el resultado.',
+            'toolbox' => $defaultToolbox,
+            'expected_result' => 'Resultado de la suma',
+            'difficulty' => 'easy',
             'points' => 15,
-            'order' => 2,
+            'lesson_id' => $lesson1->id,
         ]);
 
         Exercise::create([
-            'lesson_id' => $lesson1->id,
-            'title' => 'Operaciones Combinadas',
-            'description' => 'Combina suma y multiplicación',
-            'instructions' => 'Calcula (2 + 3) × 4 para obtener 20',
-            'difficulty' => 'intermediate',
-            'toolbox' => [
-                'kind' => 'flyoutToolbox',
-                'contents' => [
-                    ['kind' => 'block', 'type' => 'math_number'],
-                    ['kind' => 'block', 'type' => 'math_arithmetic'],
-                ],
-            ],
-            'expected_result' => '20',
-            'hints' => [
-                'Primero suma 2 + 3',
-                'Luego multiplica el resultado por 4',
-                'Puedes anidar bloques de operaciones',
-            ],
+            'title' => 'Bucle simple',
+            'description' => 'Crea un bucle que repita una acción 5 veces',
+            'instructions' => 'Usa un bloque de repetición para ejecutar una acción 5 veces.',
+            'toolbox' => $defaultToolbox,
+            'expected_result' => 'Acción repetida 5 veces',
+            'difficulty' => 'medium',
             'points' => 20,
-            'order' => 3,
+            'lesson_id' => $lesson1->id,
         ]);
 
         Exercise::create([
-            'lesson_id' => $lesson1->id,
-            'title' => 'Desafío Final',
-            'description' => 'Operación compleja',
-            'instructions' => 'Calcula (10 - 5) × (3 + 2) para obtener 25',
-            'difficulty' => 'intermediate',
-            'toolbox' => [
-                'kind' => 'flyoutToolbox',
-                'contents' => [
-                    ['kind' => 'block', 'type' => 'math_number'],
-                    ['kind' => 'block', 'type' => 'math_arithmetic'],
-                ],
-            ],
-            'expected_result' => '25',
-            'hints' => [
-                'Necesitas dos operaciones separadas',
-                'Primero calcula (10 - 5)',
-                'Luego calcula (3 + 2)',
-                'Finalmente multiplica ambos resultados',
-            ],
+            'title' => 'Condicionales',
+            'description' => 'Usa bloques if/else para tomar decisiones',
+            'instructions' => 'Muestra mensajes distintos según una condición.',
+            'toolbox' => $defaultToolbox,
+            'expected_result' => 'Mensaje según condición',
+            'difficulty' => 'medium',
             'points' => 25,
-            'order' => 4,
+            'lesson_id' => $lesson1->id,
+        ]);
+
+        Exercise::create([
+            'title' => 'Función personalizada',
+            'description' => 'Crea una función que calcule el área de un rectángulo',
+            'instructions' => 'Define una función que reciba base y altura.',
+            'toolbox' => $defaultToolbox,
+            'expected_result' => 'Área calculada correctamente',
+            'difficulty' => 'hard',
+            'points' => 30,
+            'lesson_id' => $lesson1->id,
         ]);
     }
 }

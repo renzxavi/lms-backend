@@ -18,8 +18,6 @@ return new class extends Migration
             $table->integer('points_earned')->default(0);
             $table->integer('attempts')->default(0);
             $table->timestamps();
-
-            // Índice único para evitar duplicados
             $table->unique(['user_id', 'exercise_id']);
         });
     }
