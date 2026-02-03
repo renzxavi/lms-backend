@@ -11,9 +11,10 @@ return new class extends Migration
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->integer('order')->default(0);
-            $table->boolean('is_active')->default(true);
+            $table->string('icon')->nullable();
+            $table->string('color')->nullable();
             $table->timestamps();
         });
     }

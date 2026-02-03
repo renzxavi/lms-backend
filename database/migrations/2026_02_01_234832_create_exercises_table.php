@@ -12,12 +12,14 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->text('instructions');   // obligatorio
-            $table->json('toolbox');        // obligatorio
-            $table->string('expected_result'); // obligatorio
-            $table->enum('difficulty', ['easy','medium','hard']);
-            $table->integer('points')->default(0);
-            $table->foreignId('lesson_id')->constrained()->cascadeOnDelete();
+            $table->text('instructions')->nullable();
+            $table->json('toolbox')->nullable();
+            $table->text('expected_result')->nullable();
+            $table->enum('difficulty', ['easy', 'medium', 'hard'])->default('easy');
+            $table->integer('points')->default(10);
+            $table->foreignId('lesson_id')->constrained()->onDelete('cascade');
+            $table->string('character')->nullable();
+            $table->text('story')->nullable();
             $table->timestamps();
         });
     }
