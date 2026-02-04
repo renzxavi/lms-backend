@@ -10,13 +10,16 @@ class ExerciseController extends Controller
 {
     public function index()
     {
-        $exercises = Exercise::with('lesson')->get();
+        // Cargamos la lección Y el progreso del usuario actual en una sola consulta
+        $exercises = Exercise::with(['lesson', 'userProgress'])->get();
         return response()->json($exercises);
     }
 
     public function show($id)
     {
-        $exercise = Exercise::with('lesson')->findOrFail($id);
+        // También incluimos el progreso en la vista individual por si quieres mostrar
+        // el último código que el usuario escribió en ese ejercicio
+        $exercise = Exercise::with(['lesson', 'userProgress'])->findOrFail($id);
         return response()->json($exercise);
     }
 
@@ -31,23 +34,18 @@ class ExerciseController extends Controller
         $exercise = Exercise::findOrFail($validated['exercise_id']);
         $user = $request->user();
 
-        // Verificar si ya completó este ejercicio
+        // 1. Buscar progreso existente
         $progress = Progress::where('user_id', $user->id)
             ->where('exercise_id', $exercise->id)
             ->first();
 
-        if ($progress && $progress->completed) {
-            return response()->json([
-                'message' => '¡Ya completaste este ejercicio!',
-                'correct' => true,
-                'points_earned' => 0,
-                'total_points' => $user->total_points
-            ]);
-        }
+        // Si ya estaba completado, no sumamos puntos pero permitimos re-entrega
+        $alreadyCompleted = $progress && $progress->completed;
 
-        // VALIDACIÓN MEJORADA
+        // 2. VALIDACIÓN
         $isCorrect = $this->validateExercise($exercise, $validated['code'], $validated['result']);
 
+        // 3. ACTUALIZAR O CREAR PROGRESO
         if (!$progress) {
             $progress = Progress::create([
                 'user_id' => $user->id,
@@ -59,51 +57,45 @@ class ExerciseController extends Controller
                 'attempts' => 1,
             ]);
         } else {
-            $wasCompleted = $progress->completed;
             $progress->update([
                 'code' => $validated['code'],
                 'result' => json_encode($validated['result']),
-                'completed' => $isCorrect,
-                'points_earned' => $isCorrect ? $exercise->points : 0,
+                'completed' => $isCorrect || $progress->completed, // No perdemos el "completed" si ya era true
+                'points_earned' => ($isCorrect || $progress->completed) ? $exercise->points : 0,
                 'attempts' => $progress->attempts + 1,
             ]);
         }
 
-        // Incrementar puntos solo si es la primera vez que lo completa
-        if ($isCorrect && !($progress->getOriginal('completed') ?? false)) {
+        // 4. INCREMENTAR PUNTOS (Solo si acaba de pasar de falso a verdadero)
+        if ($isCorrect && !$alreadyCompleted) {
             $user->increment('total_points', $exercise->points);
         }
 
         return response()->json([
             'message' => $isCorrect ? '¡Correcto! 🎉 Excelente trabajo' : 'Intenta de nuevo 💪',
             'correct' => $isCorrect,
-            'points_earned' => $isCorrect ? $exercise->points : 0,
+            'points_earned' => $isCorrect && !$alreadyCompleted ? $exercise->points : 0,
             'total_points' => $user->fresh()->total_points
         ]);
     }
 
     private function validateExercise($exercise, $code, $result)
     {
-        // Obtener el output del resultado
         $output = $result['output'] ?? '';
         
-        // Normalizar para comparación (quitar espacios, minúsculas, comillas)
         $normalizedOutput = strtolower(trim(str_replace(['"', "'", ' ', '¡', '!'], '', $output)));
         $normalizedExpected = strtolower(trim(str_replace(['"', "'", ' ', '¡', '!'], '', $exercise->expected_result)));
         
-        // Validación flexible
         if (str_contains($normalizedOutput, $normalizedExpected)) {
             return true;
         }
         
-        // Si esperamos un número, validar que el número esté presente
         if (is_numeric($normalizedExpected)) {
             if (str_contains($normalizedOutput, $normalizedExpected)) {
                 return true;
             }
         }
         
-        // Si hay código y output (para ejercicios abiertos)
         if (!empty($code) && !empty($output) && strlen($normalizedExpected) < 5) {
             return true;
         }
@@ -113,7 +105,7 @@ class ExerciseController extends Controller
 
     public function lessons()
     {
-        $lessons = \App\Models\Lesson::with('exercises')->orderBy('order')->get();
+        $lessons = \App\Models\Lesson::with('exercises.userProgress')->orderBy('order')->get();
         return response()->json($lessons);
     }
 }
