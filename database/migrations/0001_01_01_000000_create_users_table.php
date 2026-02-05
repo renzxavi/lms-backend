@@ -6,57 +6,31 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        // TABLA DE USUARIOS PRINCIPAL
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             
-            // --- CAMPOS PERSONALIZADOS ---
+            // Campos base (SIN total_points)
             $table->string('phone')->nullable();
             $table->string('institution')->nullable();
             $table->string('address')->nullable();
             $table->string('role')->default('student');
-            $table->integer('total_points')->default(0);
             $table->string('avatar')->nullable();
-            // -----------------------------
 
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
 
-        // TABLA PARA RESTABLECER CONTRASEÑAS
-        Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
-        });
-
-        // TABLA PARA MANEJO DE SESIONES (Requerida por tu configuración actual)
-        Schema::create('sessions', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->foreignId('user_id')->nullable()->index();
-            $table->string('ip_address', 45)->nullable();
-            $table->text('user_agent')->nullable();
-            $table->longText('payload');
-            $table->integer('last_activity')->index();
-        });
+        // (Aquí irían también las tablas de password_resets y sessions si las tienes en este mismo archivo)
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
-        Schema::dropIfExists('sessions');
     }
 };

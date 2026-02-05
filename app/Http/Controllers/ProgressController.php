@@ -3,40 +3,137 @@
 namespace App\Http\Controllers;
 
 use App\Models\Progress;
-use App\Models\User;
+use App\Models\Exercise;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProgressController extends Controller
 {
-    public function index(Request $request)
+    /**
+     * Guardar o actualizar el progreso del usuario
+     */
+    public function store(Request $request, Exercise $exercise)
     {
-        $progress = Progress::where('user_id', $request->user()->id)
-            ->with('exercise')
-            ->get();
+        $request->validate([
+            'code' => 'required|string',
+            'result' => 'nullable|array',
+            'completed' => 'required|boolean',
+        ]);
 
-        return response()->json($progress);
+        try {
+            DB::beginTransaction();
+
+            // Buscar si ya existe progreso para este ejercicio
+            $existingProgress = Progress::where('user_id', auth()->id())
+                ->where('exercise_id', $exercise->id)
+                ->first();
+
+            $isFirstCompletion = !$existingProgress || ($existingProgress && !$existingProgress->completed && $request->completed);
+
+            $progress = Progress::updateOrCreate(
+                [
+                    'user_id' => auth()->id(),
+                    'exercise_id' => $exercise->id,
+                ],
+                [
+                    'code' => $request->code,
+                    'result' => $request->result,
+                    'completed' => $request->completed,
+                ]
+            );
+
+            // Incrementar intentos
+            $progress->increment('attempts');
+
+            // Solo otorgar puntos si es la primera vez que completa el ejercicio
+            if ($isFirstCompletion && $request->completed) {
+                $progress->points_earned = $exercise->points;
+                $progress->save();
+
+                // Actualizar puntos totales del usuario
+                $user = auth()->user();
+                $user->increment('total_points', $exercise->points);
+            }
+
+            DB::commit();
+
+            return response()->json([
+                'message' => 'Progreso guardado exitosamente',
+                'progress' => $progress->fresh(),
+                'total_user_points' => auth()->user()->fresh()->total_points ?? 0,
+                'points_awarded' => $isFirstCompletion && $request->completed ? $exercise->points : 0,
+            ]);
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'message' => 'Error al guardar el progreso',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
-    public function show(Request $request, $exerciseId)
+    /**
+     * Obtener el progreso del usuario para un ejercicio específico
+     */
+    public function show(Exercise $exercise)
     {
-        $progress = Progress::where('user_id', $request->user()->id)
-            ->where('exercise_id', $exerciseId)
-            ->with('exercise')
+        $progress = Progress::where('user_id', auth()->id())
+            ->where('exercise_id', $exercise->id)
             ->first();
 
-        return response()->json($progress);
+        return response()->json([
+            'progress' => $progress,
+        ]);
     }
 
-    public function leaderboard()
+    /**
+     * Obtener todo el progreso del usuario
+     */
+    public function index()
     {
-        $users = User::select('id', 'name', 'total_points')
-            ->withCount(['progress as exercises_completed' => function ($query) {
-                $query->where('completed', true);
-            }])
-            ->orderBy('total_points', 'desc')
-            ->limit(10)
+        $progress = Progress::where('user_id', auth()->id())
+            ->with('exercise')
             ->get();
 
-        return response()->json($users);
+        $stats = [
+            'total_exercises' => Exercise::count(),
+            'completed_exercises' => $progress->where('completed', true)->count(),
+            'total_points' => auth()->user()->total_points ?? 0,
+            'total_attempts' => $progress->sum('attempts'),
+        ];
+
+        return response()->json([
+            'progress' => $progress,
+            'stats' => $stats,
+        ]);
+    }
+
+    /**
+     * Reiniciar el progreso de un ejercicio
+     */
+    public function reset(Exercise $exercise)
+    {
+        $progress = Progress::where('user_id', auth()->id())
+            ->where('exercise_id', $exercise->id)
+            ->first();
+
+        if ($progress) {
+            // Restar puntos si ya los había ganado
+            if ($progress->points_earned > 0) {
+                $user = auth()->user();
+                $user->decrement('total_points', $progress->points_earned);
+            }
+
+            $progress->delete();
+
+            return response()->json([
+                'message' => 'Progreso reiniciado exitosamente',
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'No hay progreso para reiniciar',
+        ], 404);
     }
 }

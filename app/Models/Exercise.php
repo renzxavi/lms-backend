@@ -12,10 +12,20 @@ class Exercise extends Model
     protected $fillable = [
         'title',
         'description',
+        'instructions',
+        'toolbox',
+        'expected_result',
         'difficulty',
         'points',
         'lesson_id',
-        'expected_result', // Asegúrate de que esté en fillable si lo usas para validar
+        'character',
+        'story',
+        'help_video_url',
+        'help_text',
+    ];
+
+    protected $casts = [
+        'toolbox' => 'array',
     ];
 
     public function lesson()
@@ -23,13 +33,11 @@ class Exercise extends Model
         return $this->belongsTo(Lesson::class);
     }
 
-    // Relación para obtener TODOS los registros de progreso (Admin/Stats)
     public function progress()
     {
         return $this->hasMany(Progress::class);
     }
 
-    // Relación específica para el usuario autenticado (Ideal para el Dashboard)
     public function userProgress()
     {
         return $this->hasOne(Progress::class)->where('user_id', auth()->id());
