@@ -13,8 +13,13 @@ class Lesson extends Model
         'title',
         'description',
         'order',
+        'icon',
+        'color',
     ];
 
+    /**
+     * Relación: Una lección tiene muchos ejercicios
+     */
     public function exercises()
     {
         return $this->hasMany(Exercise::class);
