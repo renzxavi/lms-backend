@@ -9,20 +9,22 @@ class Exercise extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'title',
-        'description',
-        'instructions',
-        'toolbox',
-        'expected_result',
-        'difficulty',
-        'points',
-        'lesson_id',
-        'character',
-        'story',
-        'help_video_url',
-        'help_text',
-    ];
+   protected $fillable = [
+    'title',
+    'description',
+    'instructions',
+    'toolbox',
+    'expected_result',
+    'difficulty',
+    'points',
+    'lesson_id',
+    'character',
+    'story',
+    'help_video_url',
+    'help_text',
+    'content',    // NUEVO
+    'video_url',  // NUEVO
+];
 
     protected $casts = [
         'toolbox' => 'array',
