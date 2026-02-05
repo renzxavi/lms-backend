@@ -10,7 +10,7 @@ class ExerciseSeeder extends Seeder
 {
     public function run(): void
     {
-        // 🐱 MÓDULO 1: Aventura del Gatito
+        // 🐱 MÓDULO 1: Aventura del Gatito.
         $lesson1 = Lesson::create([
             'title' => '🐱 Aventura del Gatito',
             'description' => 'Ayuda al gatito a aprender sus primeras palabras',
