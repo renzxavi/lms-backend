@@ -19,6 +19,23 @@ class ExerciseSeeder extends Seeder
             'color' => '#FF6B9D'
         ]);
 
+        // VIDEO/LECTURA PRIMERO
+        Exercise::create([
+            'title' => 'La Siesta del Gatito',
+            'description' => 'Aprende qué es una variable viendo este video',
+            'instructions' => 'Mira el video para entender cómo guardar información',
+            'toolbox' => null,
+            'expected_result' => null,
+            'difficulty' => 'easy',
+            'points' => 5,
+            'lesson_id' => $lesson1->id,
+            'character' => 'cat',
+            'story' => 'El gatito necesita recordar cuántas siestas tomó hoy',
+            'help_video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            'help_text' => 'Mira el video completo para aprender sobre variables. No hay código que escribir en este ejercicio'
+        ]);
+
+        // EJERCICIOS PRÁCTICOS
         Exercise::create([
             'title' => 'El Gatito Dice Hola',
             'description' => 'Haz que el gatito diga ¡Miau! Hola amigos',
@@ -47,21 +64,6 @@ class ExerciseSeeder extends Seeder
             'story' => 'El gatito vio 3 ratones en la cocina y 2 en el jardín. ¿Cuántos son en total?',
             'help_video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
             'help_text' => 'Necesitas usar un bloque de matemáticas para sumar. Busca el bloque que tiene el símbolo más y coloca los números 3 y 2. Luego, imprime el resultado para ver cuántos ratones hay en total'
-        ]);
-
-        Exercise::create([
-            'title' => 'La Siesta del Gatito',
-            'description' => 'Aprende qué es una variable viendo este video',
-            'instructions' => 'Mira el video para entender cómo guardar información',
-            'toolbox' => null,
-            'expected_result' => null,
-            'difficulty' => 'easy',
-            'points' => 5,
-            'lesson_id' => $lesson1->id,
-            'character' => 'cat',
-            'story' => 'El gatito necesita recordar cuántas siestas tomó hoy',
-            'help_video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-            'help_text' => 'Mira el video completo para aprender sobre variables. No hay código que escribir en este ejercicio'
         ]);
 
         Exercise::create([
@@ -133,6 +135,7 @@ class ExerciseSeeder extends Seeder
             'color' => '#4ECDC4'
         ]);
 
+        // VIDEO/LECTURA PRIMERO
         Exercise::create([
             'title' => 'Aprende sobre Bucles',
             'description' => 'Video explicativo sobre repeticiones',
@@ -148,6 +151,7 @@ class ExerciseSeeder extends Seeder
             'help_text' => 'Observa cómo los bucles repiten instrucciones automáticamente'
         ]);
 
+        // EJERCICIOS PRÁCTICOS
         Exercise::create([
             'title' => 'Ladridos del Perrito',
             'description' => 'Haz que el perrito ladre 3 veces',
@@ -247,6 +251,7 @@ class ExerciseSeeder extends Seeder
             'color' => '#FFD93D'
         ]);
 
+        // VIDEO/LECTURA PRIMERO
         Exercise::create([
             'title' => 'Video: Matemáticas Avanzadas',
             'description' => 'Aprende sobre multiplicación y división',
@@ -262,6 +267,7 @@ class ExerciseSeeder extends Seeder
             'help_text' => 'Presta atención a las operaciones matemáticas'
         ]);
 
+        // EJERCICIOS PRÁCTICOS
         Exercise::create([
             'title' => 'La Comida del León',
             'description' => 'El león come 5 kilos por día. ¿Cuánto comerá en 7 días?',
@@ -361,6 +367,7 @@ class ExerciseSeeder extends Seeder
             'color' => '#95E1D3'
         ]);
 
+        // VIDEO/LECTURA PRIMERO
         Exercise::create([
             'title' => 'Video: Lógica Booleana',
             'description' => 'Aprende sobre verdadero y falso',
@@ -376,6 +383,7 @@ class ExerciseSeeder extends Seeder
             'help_text' => 'Entiende cómo funciona AND, OR y NOT'
         ]);
 
+        // EJERCICIOS PRÁCTICOS
         Exercise::create([
             'title' => 'Memoria del Elefante',
             'description' => 'Imprime los números 1, 2, 3 usando un bucle',
@@ -475,6 +483,7 @@ class ExerciseSeeder extends Seeder
             'color' => '#F38181'
         ]);
 
+        // VIDEO/LECTURA PRIMERO
         Exercise::create([
             'title' => 'Video: Algoritmos Eficientes',
             'description' => 'Aprende a optimizar tu código',
@@ -490,6 +499,7 @@ class ExerciseSeeder extends Seeder
             'help_text' => 'Observa técnicas de optimización'
         ]);
 
+        // EJERCICIOS PRÁCTICOS
         Exercise::create([
             'title' => 'Saltos del Conejo',
             'description' => 'El conejo salta 3 metros cada vez. ¿Cuánto en 7 saltos?',
@@ -589,6 +599,7 @@ class ExerciseSeeder extends Seeder
             'color' => '#FF8C42'
         ]);
 
+        // VIDEO/LECTURA PRIMERO
         Exercise::create([
             'title' => 'Video: ¿Qué son los Arrays?',
             'description' => 'Introducción a listas y arrays',
@@ -604,6 +615,7 @@ class ExerciseSeeder extends Seeder
             'help_text' => 'Entiende cómo funcionan las listas'
         ]);
 
+        // EJERCICIOS PRÁCTICOS
         Exercise::create([
             'title' => 'Lista de Frutas',
             'description' => 'Crea una lista con 3 frutas favoritas',
@@ -703,6 +715,7 @@ class ExerciseSeeder extends Seeder
             'color' => '#A0674B'
         ]);
 
+        // VIDEO/LECTURA PRIMERO
         Exercise::create([
             'title' => 'Video: ¿Qué son las Funciones?',
             'description' => 'Introducción a funciones',
@@ -718,6 +731,7 @@ class ExerciseSeeder extends Seeder
             'help_text' => 'Entiende el concepto de funciones'
         ]);
 
+        // EJERCICIOS PRÁCTICOS
         Exercise::create([
             'title' => 'Mi Primera Función',
             'description' => 'Crea una función que salude',
@@ -817,6 +831,7 @@ class ExerciseSeeder extends Seeder
             'color' => '#2D3047'
         ]);
 
+        // VIDEO/LECTURA PRIMERO
         Exercise::create([
             'title' => 'Video: Trabajando con Texto',
             'description' => 'Aprende operaciones con strings',
@@ -832,6 +847,7 @@ class ExerciseSeeder extends Seeder
             'help_text' => 'Aprende sobre strings y sus métodos'
         ]);
 
+        // EJERCICIOS PRÁCTICOS
         Exercise::create([
             'title' => 'Concatenar Textos',
             'description' => 'Une Hola más espacio más Mundo',
@@ -931,6 +947,7 @@ class ExerciseSeeder extends Seeder
             'color' => '#4A5859'
         ]);
 
+        // VIDEO/LECTURA PRIMERO
         Exercise::create([
             'title' => 'Video: Introducción a Objetos',
             'description' => '¿Qué son los objetos en programación?',
@@ -946,6 +963,7 @@ class ExerciseSeeder extends Seeder
             'help_text' => 'Entiende cómo funcionan los objetos'
         ]);
 
+        // EJERCICIOS PRÁCTICOS
         Exercise::create([
             'title' => 'Crear un Objeto Simple',
             'description' => 'Crea objeto lechuza con nombre y edad',
@@ -1045,6 +1063,7 @@ class ExerciseSeeder extends Seeder
             'color' => '#6A994E'
         ]);
 
+        // VIDEO/LECTURA PRIMERO
         Exercise::create([
             'title' => 'Video Final: Tu Viaje',
             'description' => 'Reflexión sobre lo aprendido',
@@ -1060,6 +1079,7 @@ class ExerciseSeeder extends Seeder
             'help_text' => 'Celebra tu logro. Has aprendido mucho'
         ]);
 
+        // EJERCICIOS PRÁCTICOS
         Exercise::create([
             'title' => 'Calculadora Básica',
             'description' => 'Crea funciones para sumar, restar, multiplicar y dividir',
@@ -1159,6 +1179,7 @@ class ExerciseSeeder extends Seeder
             'color' => '#00D9FF'
         ]);
 
+        // TODOS SON VIDEO/LECTURA
         Exercise::create([
             'title' => '¿Qué es un Robot?',
             'description' => 'Descubre qué hace a una máquina un robot',
