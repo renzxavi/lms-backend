@@ -10,16 +10,27 @@ class ExerciseController extends Controller
 {
     public function index()
     {
-        // Cargamos la lección Y el progreso del usuario actual en una sola consulta
-        $exercises = Exercise::with(['lesson', 'userProgress'])->get();
+        // Los ejercicios ya incluirán 'is_locked' automáticamente gracias al $appends
+        $exercises = Exercise::with(['lesson', 'userProgress'])
+            ->orderBy('lesson_id')
+            ->orderBy('order')
+            ->get();
+        
         return response()->json($exercises);
     }
 
     public function show($id)
     {
-        // También incluimos el progreso en la vista individual por si quieres mostrar
-        // el último código que el usuario escribió en ese ejercicio
         $exercise = Exercise::with(['lesson', 'userProgress'])->findOrFail($id);
+        
+        // NUEVO: Verificar si está bloqueado
+        if ($exercise->is_locked) {
+            return response()->json([
+                'message' => 'Este ejercicio está bloqueado. Completa los ejercicios anteriores primero.',
+                'locked' => true
+            ], 403); // Forbidden
+        }
+        
         return response()->json($exercise);
     }
 
@@ -31,8 +42,16 @@ class ExerciseController extends Controller
             'result' => 'nullable',
         ]);
 
-        $exercise = Exercise::findOrFail($validated['exercise_id']);
+        $exercise = Exercise::with('lesson')->findOrFail($validated['exercise_id']);
         $user = $request->user();
+
+        // NUEVO: Validar que el ejercicio NO esté bloqueado
+        if ($exercise->isLockedForUser($user->id)) {
+            return response()->json([
+                'message' => 'No puedes enviar respuestas a un ejercicio bloqueado. Completa los ejercicios anteriores primero.',
+                'error' => 'exercise_locked'
+            ], 403);
+        }
 
         // 1. Buscar progreso existente
         $progress = Progress::where('user_id', $user->id)
@@ -60,7 +79,7 @@ class ExerciseController extends Controller
             $progress->update([
                 'code' => $validated['code'],
                 'result' => json_encode($validated['result']),
-                'completed' => $isCorrect || $progress->completed, // No perdemos el "completed" si ya era true
+                'completed' => $isCorrect || $progress->completed,
                 'points_earned' => ($isCorrect || $progress->completed) ? $exercise->points : 0,
                 'attempts' => $progress->attempts + 1,
             ]);
@@ -105,7 +124,10 @@ class ExerciseController extends Controller
 
     public function lessons()
     {
-        $lessons = \App\Models\Lesson::with('exercises.userProgress')->orderBy('order')->get();
+        $lessons = \App\Models\Lesson::with('exercises.userProgress')
+            ->orderBy('order')
+            ->get();
+        
         return response()->json($lessons);
     }
 }

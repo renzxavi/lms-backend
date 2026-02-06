@@ -10,32 +10,32 @@ class ExerciseSeeder extends Seeder
 {
     public function run(): void
     {
-        // 🐱 MÓDULO 1: Aventura del Gatito (Introducción - FÁCIL)
+        // 🐱 MÓDULO 1: Aventura del Gatito. Ej. 1.
+
         $lesson1 = Lesson::create([
-            'title' => 'Aventura del Gatito',
+            'title' => 'Programación - Aventura del Gatito',
             'description' => 'Ayuda al gatito a aprender sus primeras palabras',
             'order' => 1,
             'icon' => '🐱',
             'color' => '#FF6B9D'
         ]);
 
-        // VIDEO/LECTURA PRIMERO
         Exercise::create([
-            'title' => 'La Siesta del Gatito',
-            'description' => 'Aprende qué es una variable viendo este video',
-            'instructions' => 'Mira el video para entender cómo guardar información',
+            'title' => 'Inicio de la aventura',
+            'description' => 'Aprende qué es una Blockly viendo este video',
+            'instructions' => 'Mira el video para poder continuar con la aventura',
             'toolbox' => null,
             'expected_result' => null,
             'difficulty' => 'easy',
             'points' => 5,
             'lesson_id' => $lesson1->id,
+            'order' => 1,
             'character' => 'cat',
-            'story' => 'El gatito necesita recordar cuántas siestas tomó hoy',
+            'story' => 'El gatito necesita aprender habilidades para la aventura',
             'help_video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-            'help_text' => 'Mira el video completo para aprender sobre variables. No hay código que escribir en este ejercicio'
+            'help_text' => 'Mira el video completo para continuar'
         ]);
 
-        // EJERCICIOS PRÁCTICOS
         Exercise::create([
             'title' => 'El Gatito Dice Hola',
             'description' => 'Haz que el gatito diga ¡Miau! Hola amigos',
@@ -45,6 +45,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 10,
             'lesson_id' => $lesson1->id,
+            'order' => 2,
             'character' => 'cat',
             'story' => 'El gatito quiere saludar a todos sus amigos. ¿Le ayudas?',
             'help_video_url' => 'https://www.youtube.com/embed/eT7i6JSIPmI',
@@ -60,6 +61,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 10,
             'lesson_id' => $lesson1->id,
+            'order' => 3,
             'character' => 'cat',
             'story' => 'El gatito vio 3 ratones en la cocina y 2 en el jardín. ¿Cuántos son en total?',
             'help_video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
@@ -75,6 +77,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 10,
             'lesson_id' => $lesson1->id,
+            'order' => 4,
             'character' => 'cat',
             'story' => 'El gatito se llama Michi. Vamos a guardar su nombre',
             'help_video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
@@ -90,6 +93,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 10,
             'lesson_id' => $lesson1->id,
+            'order' => 5,
             'character' => 'cat',
             'story' => 'Michi tiene 2 años, pero hoy es su cumpleaños',
             'help_video_url' => null,
@@ -105,6 +109,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 10,
             'lesson_id' => $lesson1->id,
+            'order' => 6,
             'character' => 'cat',
             'story' => 'Ayuda al gatito a contar sus juguetes',
             'help_video_url' => null,
@@ -120,13 +125,14 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 10,
             'lesson_id' => $lesson1->id,
+            'order' => 7,
             'character' => 'cat',
             'story' => 'El gatito quiere decir su nombre completo',
             'help_video_url' => null,
             'help_text' => 'Une Miau más espacio más Michi'
         ]);
 
-        // 🐶 MÓDULO 2: El Perrito Explorador (Bucles y Condiciones - FÁCIL/MEDIO)
+        // 🐶 MÓDULO 2: El Perrito Explorador
         $lesson2 = Lesson::create([
             'title' => 'El Perrito Explorador',
             'description' => 'Acompaña al perrito en su aventura por el parque',
@@ -135,7 +141,6 @@ class ExerciseSeeder extends Seeder
             'color' => '#4ECDC4'
         ]);
 
-        // VIDEO/LECTURA PRIMERO
         Exercise::create([
             'title' => 'Aprende sobre Bucles',
             'description' => 'Video explicativo sobre repeticiones',
@@ -145,13 +150,13 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 5,
             'lesson_id' => $lesson2->id,
+            'order' => 1,
             'character' => 'dog',
             'story' => 'Los bucles son muy útiles. Aprende más sobre ellos',
             'help_video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
             'help_text' => 'Observa cómo los bucles repiten instrucciones automáticamente'
         ]);
 
-        // EJERCICIOS PRÁCTICOS
         Exercise::create([
             'title' => 'Ladridos del Perrito',
             'description' => 'Haz que el perrito ladre 3 veces',
@@ -161,6 +166,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 15,
             'lesson_id' => $lesson2->id,
+            'order' => 2,
             'character' => 'dog',
             'story' => 'El perrito quiere saludar ladrando 3 veces',
             'help_video_url' => null,
@@ -176,6 +182,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 20,
             'lesson_id' => $lesson2->id,
+            'order' => 3,
             'character' => 'dog',
             'story' => 'Al perrito le encanta dar vueltas en el parque. Ayúdalo a dar 5 vueltas',
             'help_video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
@@ -191,6 +198,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 20,
             'lesson_id' => $lesson2->id,
+            'order' => 4,
             'character' => 'dog',
             'story' => 'Si está lloviendo, el perrito se queda en casa. Si no, sale a jugar',
             'help_video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
@@ -206,6 +214,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 25,
             'lesson_id' => $lesson2->id,
+            'order' => 5,
             'character' => 'dog',
             'story' => 'El perrito cuenta cada paso que da. Ayúdalo a contar hasta 10',
             'help_video_url' => null,
@@ -221,6 +230,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 20,
             'lesson_id' => $lesson2->id,
+            'order' => 6,
             'character' => 'dog',
             'story' => 'El perrito tiene hambre. ¿Qué debería hacer?',
             'help_video_url' => null,
@@ -236,13 +246,14 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 15,
             'lesson_id' => $lesson2->id,
+            'order' => 7,
             'character' => 'dog',
             'story' => 'El perrito está muy activo hoy',
             'help_video_url' => null,
             'help_text' => 'Repite 8 veces e imprime salto'
         ]);
 
-        // 🦁 MÓDULO 3: El León Matemático (Operaciones - MEDIO)
+        // 🦁 MÓDULO 3: El León Matemático
         $lesson3 = Lesson::create([
             'title' => 'El León Matemático',
             'description' => 'Resuelve problemas con el rey de la selva',
@@ -251,7 +262,6 @@ class ExerciseSeeder extends Seeder
             'color' => '#FFD93D'
         ]);
 
-        // VIDEO/LECTURA PRIMERO
         Exercise::create([
             'title' => 'Video: Matemáticas Avanzadas',
             'description' => 'Aprende sobre multiplicación y división',
@@ -261,13 +271,13 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 5,
             'lesson_id' => $lesson3->id,
+            'order' => 1,
             'character' => 'lion',
             'story' => 'El león te enseña matemáticas avanzadas',
             'help_video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
             'help_text' => 'Presta atención a las operaciones matemáticas'
         ]);
 
-        // EJERCICIOS PRÁCTICOS
         Exercise::create([
             'title' => 'La Comida del León',
             'description' => 'El león come 5 kilos por día. ¿Cuánto comerá en 7 días?',
@@ -277,6 +287,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 20,
             'lesson_id' => $lesson3->id,
+            'order' => 2,
             'character' => 'lion',
             'story' => 'El león come 5 kilos al día. ¿Cuánto comerá en 7 días?',
             'help_video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
@@ -292,6 +303,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 20,
             'lesson_id' => $lesson3->id,
+            'order' => 3,
             'character' => 'lion',
             'story' => 'Hay 20 presas y 4 leones. ¿Cuántas presas le tocan a cada uno?',
             'help_video_url' => null,
@@ -307,6 +319,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 20,
             'lesson_id' => $lesson3->id,
+            'order' => 4,
             'character' => 'lion',
             'story' => 'El león quiere saber si 10 es mayor que 5',
             'help_video_url' => null,
@@ -322,6 +335,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 25,
             'lesson_id' => $lesson3->id,
+            'order' => 5,
             'character' => 'lion',
             'story' => 'Al dividir 23 presas entre 5 leones, ¿cuántas sobran?',
             'help_video_url' => null,
@@ -337,6 +351,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 25,
             'lesson_id' => $lesson3->id,
+            'order' => 6,
             'character' => 'lion',
             'story' => 'La potencia del rugido es 2 elevado a 3. ¿Cuánto es?',
             'help_video_url' => null,
@@ -352,13 +367,14 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 15,
             'lesson_id' => $lesson3->id,
+            'order' => 7,
             'character' => 'lion',
             'story' => 'El león se hace más fuerte',
             'help_video_url' => null,
             'help_text' => '6 × 2 = ?'
         ]);
 
-        // 🐘 MÓDULO 4: El Elefante Sabio (Patrones y Lógica - MEDIO)
+        // 🐘 MÓDULO 4: El Elefante Sabio
         $lesson4 = Lesson::create([
             'title' => 'El Elefante Sabio',
             'description' => 'Aprende patrones con el elefante más inteligente',
@@ -367,7 +383,6 @@ class ExerciseSeeder extends Seeder
             'color' => '#95E1D3'
         ]);
 
-        // VIDEO/LECTURA PRIMERO
         Exercise::create([
             'title' => 'Video: Lógica Booleana',
             'description' => 'Aprende sobre verdadero y falso',
@@ -377,13 +392,13 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 5,
             'lesson_id' => $lesson4->id,
+            'order' => 1,
             'character' => 'elephant',
             'story' => 'La lógica booleana es la base de la programación',
             'help_video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
             'help_text' => 'Entiende cómo funciona AND, OR y NOT'
         ]);
 
-        // EJERCICIOS PRÁCTICOS
         Exercise::create([
             'title' => 'Memoria del Elefante',
             'description' => 'Imprime los números 1, 2, 3 usando un bucle',
@@ -393,6 +408,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 25,
             'lesson_id' => $lesson4->id,
+            'order' => 2,
             'character' => 'elephant',
             'story' => 'El elefante nunca olvida. ¿Puedes repetir su patrón favorito?',
             'help_video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
@@ -408,6 +424,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 25,
             'lesson_id' => $lesson4->id,
+            'order' => 3,
             'character' => 'elephant',
             'story' => 'El elefante quiere verificar DOS condiciones a la vez',
             'help_video_url' => null,
@@ -423,6 +440,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 25,
             'lesson_id' => $lesson4->id,
+            'order' => 4,
             'character' => 'elephant',
             'story' => 'Con OR, basta que UNA condición sea verdadera',
             'help_video_url' => null,
@@ -438,6 +456,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 20,
             'lesson_id' => $lesson4->id,
+            'order' => 5,
             'character' => 'elephant',
             'story' => 'El operador NOT invierte verdadero a falso y viceversa',
             'help_video_url' => null,
@@ -453,6 +472,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'hard',
             'points' => 30,
             'lesson_id' => $lesson4->id,
+            'order' => 6,
             'character' => 'elephant',
             'story' => 'Al elefante le gustan solo los números pares',
             'help_video_url' => null,
@@ -468,13 +488,14 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'hard',
             'points' => 35,
             'lesson_id' => $lesson4->id,
+            'order' => 7,
             'character' => 'elephant',
             'story' => 'El elefante ama los patrones matemáticos especiales',
             'help_video_url' => null,
             'help_text' => 'Necesitas dos variables: a=1, b=1. En cada vuelta: suma = a+b, imprime suma, actualiza a=b y b=suma'
         ]);
 
-        // 🐰 MÓDULO 5: El Conejo Veloz (Optimización - MEDIO/DIFÍCIL)
+        // 🐰 MÓDULO 5: El Conejo Veloz
         $lesson5 = Lesson::create([
             'title' => 'El Conejo Veloz',
             'description' => 'Carreras y desafíos con el conejo más rápido',
@@ -483,7 +504,6 @@ class ExerciseSeeder extends Seeder
             'color' => '#F38181'
         ]);
 
-        // VIDEO/LECTURA PRIMERO
         Exercise::create([
             'title' => 'Video: Algoritmos Eficientes',
             'description' => 'Aprende a optimizar tu código',
@@ -493,13 +513,13 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 5,
             'lesson_id' => $lesson5->id,
+            'order' => 1,
             'character' => 'rabbit',
             'story' => 'Un código rápido es mejor. Aprende a optimizar',
             'help_video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
             'help_text' => 'Observa técnicas de optimización'
         ]);
 
-        // EJERCICIOS PRÁCTICOS
         Exercise::create([
             'title' => 'Saltos del Conejo',
             'description' => 'El conejo salta 3 metros cada vez. ¿Cuánto en 7 saltos?',
@@ -509,6 +529,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 15,
             'lesson_id' => $lesson5->id,
+            'order' => 2,
             'character' => 'rabbit',
             'story' => 'Cada salto del conejo es de 3 metros',
             'help_video_url' => null,
@@ -524,6 +545,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 25,
             'lesson_id' => $lesson5->id,
+            'order' => 3,
             'character' => 'rabbit',
             'story' => 'Hay 10 zanahorias escondidas. Ayuda al conejo a encontrarlas todas',
             'help_video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
@@ -539,6 +561,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 25,
             'lesson_id' => $lesson5->id,
+            'order' => 4,
             'character' => 'rabbit',
             'story' => 'Al conejo solo le interesan los números impares',
             'help_video_url' => null,
@@ -554,6 +577,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 25,
             'lesson_id' => $lesson5->id,
+            'order' => 5,
             'character' => 'rabbit',
             'story' => 'El conejo va a despegar como un cohete',
             'help_video_url' => null,
@@ -569,6 +593,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'hard',
             'points' => 35,
             'lesson_id' => $lesson5->id,
+            'order' => 6,
             'character' => 'rabbit',
             'story' => 'El conejo necesita sumar muy rápido',
             'help_video_url' => null,
@@ -584,13 +609,14 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 25,
             'lesson_id' => $lesson5->id,
+            'order' => 7,
             'character' => 'rabbit',
             'story' => 'El conejo aprende las tablas de multiplicar',
             'help_video_url' => null,
             'help_text' => 'Bucle de 1 a 10. En cada vuelta imprime 5 * i'
         ]);
 
-        // 🦊 MÓDULO 6: El Zorro Astuto (Arrays - MEDIO/DIFÍCIL)
+        // 🦊 MÓDULO 6: El Zorro Astuto
         $lesson6 = Lesson::create([
             'title' => 'El Zorro Astuto',
             'description' => 'Aprende a trabajar con listas de datos',
@@ -599,7 +625,6 @@ class ExerciseSeeder extends Seeder
             'color' => '#FF8C42'
         ]);
 
-        // VIDEO/LECTURA PRIMERO
         Exercise::create([
             'title' => 'Video: ¿Qué son los Arrays?',
             'description' => 'Introducción a listas y arrays',
@@ -609,13 +634,13 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 5,
             'lesson_id' => $lesson6->id,
+            'order' => 1,
             'character' => 'fox',
             'story' => 'Los arrays son como cajas con muchos compartimentos',
             'help_video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
             'help_text' => 'Entiende cómo funcionan las listas'
         ]);
 
-        // EJERCICIOS PRÁCTICOS
         Exercise::create([
             'title' => 'Lista de Frutas',
             'description' => 'Crea una lista con 3 frutas favoritas',
@@ -625,6 +650,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 20,
             'lesson_id' => $lesson6->id,
+            'order' => 2,
             'character' => 'fox',
             'story' => 'El zorro quiere guardar sus frutas favoritas',
             'help_video_url' => null,
@@ -640,6 +666,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 20,
             'lesson_id' => $lesson6->id,
+            'order' => 3,
             'character' => 'fox',
             'story' => 'Los arrays empiezan en la posición 0',
             'help_video_url' => null,
@@ -655,6 +682,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 25,
             'lesson_id' => $lesson6->id,
+            'order' => 4,
             'character' => 'fox',
             'story' => 'El zorro quiere ver todos sus tesoros',
             'help_video_url' => null,
@@ -670,6 +698,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'hard',
             'points' => 30,
             'lesson_id' => $lesson6->id,
+            'order' => 5,
             'character' => 'fox',
             'story' => '¿Cuántos puntos tiene el zorro en total?',
             'help_video_url' => null,
@@ -685,6 +714,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'hard',
             'points' => 30,
             'lesson_id' => $lesson6->id,
+            'order' => 6,
             'character' => 'fox',
             'story' => 'El zorro busca su número de la suerte',
             'help_video_url' => null,
@@ -700,13 +730,14 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'hard',
             'points' => 35,
             'lesson_id' => $lesson6->id,
+            'order' => 7,
             'character' => 'fox',
             'story' => '¿Cuál es el tesoro más valioso del zorro?',
             'help_video_url' => null,
             'help_text' => 'maximo=array[0]. Recorre desde i=1. Si array[i]>maximo, actualiza maximo'
         ]);
 
-        // 🐻 MÓDULO 7: El Oso Programador (Funciones - MEDIO/DIFÍCIL)
+        // 🐻 MÓDULO 7: El Oso Programador
         $lesson7 = Lesson::create([
             'title' => 'El Oso Programador',
             'description' => 'Aprende a crear y usar funciones',
@@ -715,7 +746,6 @@ class ExerciseSeeder extends Seeder
             'color' => '#A0674B'
         ]);
 
-        // VIDEO/LECTURA PRIMERO
         Exercise::create([
             'title' => 'Video: ¿Qué son las Funciones?',
             'description' => 'Introducción a funciones',
@@ -725,13 +755,13 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 5,
             'lesson_id' => $lesson7->id,
+            'order' => 1,
             'character' => 'bear',
             'story' => 'Las funciones son bloques de código reutilizables',
             'help_video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
             'help_text' => 'Entiende el concepto de funciones'
         ]);
 
-        // EJERCICIOS PRÁCTICOS
         Exercise::create([
             'title' => 'Mi Primera Función',
             'description' => 'Crea una función que salude',
@@ -741,6 +771,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 20,
             'lesson_id' => $lesson7->id,
+            'order' => 2,
             'character' => 'bear',
             'story' => 'El oso quiere crear su primera función',
             'help_video_url' => null,
@@ -756,6 +787,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 25,
             'lesson_id' => $lesson7->id,
+            'order' => 3,
             'character' => 'bear',
             'story' => 'Ahora la función debe ser más personalizada',
             'help_video_url' => null,
@@ -771,6 +803,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 25,
             'lesson_id' => $lesson7->id,
+            'order' => 4,
             'character' => 'bear',
             'story' => 'Las funciones pueden devolver valores',
             'help_video_url' => null,
@@ -786,6 +819,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 25,
             'lesson_id' => $lesson7->id,
+            'order' => 5,
             'character' => 'bear',
             'story' => 'Verifica si un número es par',
             'help_video_url' => null,
@@ -801,6 +835,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 25,
             'lesson_id' => $lesson7->id,
+            'order' => 6,
             'character' => 'bear',
             'story' => 'El oso quiere saber cuál número es mayor',
             'help_video_url' => null,
@@ -816,13 +851,14 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'hard',
             'points' => 35,
             'lesson_id' => $lesson7->id,
+            'order' => 7,
             'character' => 'bear',
             'story' => 'El oso te reta a calcular factoriales',
             'help_video_url' => null,
             'help_text' => 'factorial(n) = n × (n-1) × ... × 1. Usa un bucle: resultado=1, for i de 1 a n: resultado *= i'
         ]);
 
-        // 🐼 MÓDULO 8: El Panda Creativo (Strings - MEDIO)
+        // 🐼 MÓDULO 8: El Panda Creativo
         $lesson8 = Lesson::create([
             'title' => 'El Panda Creativo',
             'description' => 'Manipula texto como un experto',
@@ -831,7 +867,6 @@ class ExerciseSeeder extends Seeder
             'color' => '#2D3047'
         ]);
 
-        // VIDEO/LECTURA PRIMERO
         Exercise::create([
             'title' => 'Video: Trabajando con Texto',
             'description' => 'Aprende operaciones con strings',
@@ -841,13 +876,13 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 5,
             'lesson_id' => $lesson8->id,
+            'order' => 1,
             'character' => 'panda',
             'story' => 'El texto es muy importante en programación',
             'help_video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
             'help_text' => 'Aprende sobre strings y sus métodos'
         ]);
 
-        // EJERCICIOS PRÁCTICOS
         Exercise::create([
             'title' => 'Concatenar Textos',
             'description' => 'Une Hola más espacio más Mundo',
@@ -857,6 +892,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 15,
             'lesson_id' => $lesson8->id,
+            'order' => 2,
             'character' => 'panda',
             'story' => 'El panda quiere unir palabras',
             'help_video_url' => null,
@@ -872,6 +908,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 20,
             'lesson_id' => $lesson8->id,
+            'order' => 3,
             'character' => 'panda',
             'story' => 'Cuenta las letras de la palabra',
             'help_video_url' => null,
@@ -887,6 +924,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 20,
             'lesson_id' => $lesson8->id,
+            'order' => 4,
             'character' => 'panda',
             'story' => 'El panda quiere gritar su saludo',
             'help_video_url' => null,
@@ -902,6 +940,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 25,
             'lesson_id' => $lesson8->id,
+            'order' => 5,
             'character' => 'panda',
             'story' => 'Extrae una parte del texto',
             'help_video_url' => null,
@@ -917,6 +956,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 25,
             'lesson_id' => $lesson8->id,
+            'order' => 6,
             'character' => 'panda',
             'story' => 'Busca si una letra está en la palabra',
             'help_video_url' => null,
@@ -932,13 +972,14 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'medium',
             'points' => 25,
             'lesson_id' => $lesson8->id,
+            'order' => 7,
             'character' => 'panda',
             'story' => 'Reemplaza una palabra por otra',
             'help_video_url' => null,
             'help_text' => 'Me gusta el gato.replace(gato, panda)'
         ]);
 
-        // 🦉 MÓDULO 9: La Lechuza Nocturna (Objetos - DIFÍCIL)
+        // 🦉 MÓDULO 9: La Lechuza Nocturna
         $lesson9 = Lesson::create([
             'title' => 'La Lechuza Nocturna',
             'description' => 'Descubre el poder de los objetos',
@@ -947,7 +988,6 @@ class ExerciseSeeder extends Seeder
             'color' => '#4A5859'
         ]);
 
-        // VIDEO/LECTURA PRIMERO
         Exercise::create([
             'title' => 'Video: Introducción a Objetos',
             'description' => '¿Qué son los objetos en programación?',
@@ -957,13 +997,13 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 5,
             'lesson_id' => $lesson9->id,
+            'order' => 1,
             'character' => 'owl',
             'story' => 'Los objetos agrupan datos relacionados',
             'help_video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
             'help_text' => 'Entiende cómo funcionan los objetos'
         ]);
 
-        // EJERCICIOS PRÁCTICOS
         Exercise::create([
             'title' => 'Crear un Objeto Simple',
             'description' => 'Crea objeto lechuza con nombre y edad',
@@ -973,6 +1013,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'hard',
             'points' => 30,
             'lesson_id' => $lesson9->id,
+            'order' => 2,
             'character' => 'owl',
             'story' => 'Crea tu primera estructura de datos compleja',
             'help_video_url' => null,
@@ -988,6 +1029,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'hard',
             'points' => 30,
             'lesson_id' => $lesson9->id,
+            'order' => 3,
             'character' => 'owl',
             'story' => 'Accede a los datos dentro del objeto',
             'help_video_url' => null,
@@ -1003,6 +1045,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'hard',
             'points' => 30,
             'lesson_id' => $lesson9->id,
+            'order' => 4,
             'character' => 'owl',
             'story' => 'La lechuza cumplió años',
             'help_video_url' => null,
@@ -1018,6 +1061,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'hard',
             'points' => 35,
             'lesson_id' => $lesson9->id,
+            'order' => 5,
             'character' => 'owl',
             'story' => 'Los objetos pueden tener funciones',
             'help_video_url' => null,
@@ -1033,6 +1077,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'hard',
             'points' => 35,
             'lesson_id' => $lesson9->id,
+            'order' => 6,
             'character' => 'owl',
             'story' => 'Una bandada de lechuzas',
             'help_video_url' => null,
@@ -1048,13 +1093,14 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'hard',
             'points' => 35,
             'lesson_id' => $lesson9->id,
+            'order' => 7,
             'character' => 'owl',
             'story' => 'Presenta a todas las lechuzas',
             'help_video_url' => null,
             'help_text' => 'for i de 0 a length-1: imprime lechuzas[i].nombre'
         ]);
 
-        // 🐢 MÓDULO 10: La Tortuga Sabia (Proyecto Final - DIFÍCIL)
+        // 🐢 MÓDULO 10: La Tortuga Sabia
         $lesson10 = Lesson::create([
             'title' => 'La Tortuga Sabia',
             'description' => 'Demuestra todo lo que has aprendido',
@@ -1063,7 +1109,6 @@ class ExerciseSeeder extends Seeder
             'color' => '#6A994E'
         ]);
 
-        // VIDEO/LECTURA PRIMERO
         Exercise::create([
             'title' => 'Video Final: Tu Viaje',
             'description' => 'Reflexión sobre lo aprendido',
@@ -1073,13 +1118,13 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 5,
             'lesson_id' => $lesson10->id,
+            'order' => 1,
             'character' => 'turtle',
             'story' => 'Felicitaciones por llegar hasta aquí',
             'help_video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
             'help_text' => 'Celebra tu logro. Has aprendido mucho'
         ]);
 
-        // EJERCICIOS PRÁCTICOS
         Exercise::create([
             'title' => 'Calculadora Básica',
             'description' => 'Crea funciones para sumar, restar, multiplicar y dividir',
@@ -1089,6 +1134,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'hard',
             'points' => 35,
             'lesson_id' => $lesson10->id,
+            'order' => 2,
             'character' => 'turtle',
             'story' => 'La tortuga necesita una calculadora',
             'help_video_url' => null,
@@ -1104,6 +1150,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'hard',
             'points' => 40,
             'lesson_id' => $lesson10->id,
+            'order' => 3,
             'character' => 'turtle',
             'story' => 'El famoso desafío FizzBuzz',
             'help_video_url' => null,
@@ -1119,6 +1166,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'hard',
             'points' => 40,
             'lesson_id' => $lesson10->id,
+            'order' => 4,
             'character' => 'turtle',
             'story' => 'Palabras que se leen igual al revés',
             'help_video_url' => null,
@@ -1134,6 +1182,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'hard',
             'points' => 40,
             'lesson_id' => $lesson10->id,
+            'order' => 5,
             'character' => 'turtle',
             'story' => 'Los números primos son especiales',
             'help_video_url' => null,
@@ -1149,6 +1198,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'hard',
             'points' => 40,
             'lesson_id' => $lesson10->id,
+            'order' => 6,
             'character' => 'turtle',
             'story' => 'Ordena los números del más pequeño al más grande',
             'help_video_url' => null,
@@ -1164,13 +1214,14 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'hard',
             'points' => 50,
             'lesson_id' => $lesson10->id,
+            'order' => 7,
             'character' => 'turtle',
             'story' => 'Crea un sistema para agregar, buscar y listar libros. El desafío final',
             'help_video_url' => null,
             'help_text' => 'Crea array de objetos libro {titulo, autor}. Funciones: agregarLibro(), buscarPorAutor(), listarTodos()'
         ]);
 
-        // 🤖 MÓDULO 11: Introducción a la Robótica (LECTURA Y VIDEO)
+        // 🤖 MÓDULO 11: Introducción a la Robótica
         $lesson11 = Lesson::create([
             'title' => 'Introducción a la Robótica',
             'description' => 'Aprende los fundamentos de la robótica',
@@ -1179,7 +1230,6 @@ class ExerciseSeeder extends Seeder
             'color' => '#00D9FF'
         ]);
 
-        // TODOS SON VIDEO/LECTURA
         Exercise::create([
             'title' => '¿Qué es un Robot?',
             'description' => 'Descubre qué hace a una máquina un robot',
@@ -1189,6 +1239,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 10,
             'lesson_id' => $lesson11->id,
+            'order' => 1,
             'character' => 'robot',
             'story' => 'Los robots están en todas partes. Aprende cómo funcionan',
             'content' => '
@@ -1223,26 +1274,6 @@ class ExerciseSeeder extends Seeder
                         <li style="margin-bottom: 0.5rem;"><strong>Parlantes:</strong> Emiten sonidos</li>
                     </ul>
 
-                    <h3 style="font-size: 1.35rem; font-weight: bold; margin-top: 2rem; margin-bottom: 0.75rem; color: #111827;">¿Cómo funcionan juntos?</h3>
-                    <p style="line-height: 1.7; margin-bottom: 0.75rem;">Imagina que programas un robot para evitar obstáculos:</p>
-                    <ol style="line-height: 1.8; margin-bottom: 1.5rem; padding-left: 1.5rem;">
-                        <li style="margin-bottom: 0.5rem;">El <strong>sensor de distancia</strong> detecta una pared a 10cm</li>
-                        <li style="margin-bottom: 0.5rem;">El <strong>cerebro</strong> lee esa información</li>
-                        <li style="margin-bottom: 0.5rem;">El programa dice "si hay algo cerca, gira a la derecha"</li>
-                        <li style="margin-bottom: 0.5rem;">El cerebro envía la orden a los <strong>motores</strong></li>
-                        <li style="margin-bottom: 0.5rem;">Los motores hacen que el robot gire</li>
-                    </ol>
-
-                    <h3 style="font-size: 1.35rem; font-weight: bold; margin-top: 2rem; margin-bottom: 0.75rem; color: #111827;">Tipos de Robots</h3>
-                    <p style="line-height: 1.7; margin-bottom: 0.75rem;">Existen muchos tipos de robots:</p>
-                    <ul style="line-height: 1.8; margin-bottom: 1.5rem; padding-left: 1.5rem;">
-                        <li style="margin-bottom: 0.5rem;"><strong>Robots móviles:</strong> Se desplazan (como los robots aspiradora)</li>
-                        <li style="margin-bottom: 0.5rem;"><strong>Robots industriales:</strong> Trabajan en fábricas</li>
-                        <li style="margin-bottom: 0.5rem;"><strong>Drones:</strong> Vuelan de forma autónoma</li>
-                        <li style="margin-bottom: 0.5rem;"><strong>Robots humanoides:</strong> Parecen personas</li>
-                        <li style="margin-bottom: 0.5rem;"><strong>Robots educativos:</strong> Para aprender programación</li>
-                    </ul>
-
                     <div style="background: #e3f2fd; padding: 20px; border-radius: 10px; margin-top: 30px;">
                         <strong style="color: #1e40af;">💡 Dato curioso:</strong> 
                         <span style="color: #1f2937;">El primer robot industrial se llamaba "Unimate" y fue instalado en 1961 en una fábrica de General Motors. ¡Pesaba 2 toneladas!</span>
@@ -1262,6 +1293,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 10,
             'lesson_id' => $lesson11->id,
+            'order' => 2,
             'character' => 'robot',
             'story' => 'Los sensores son los ojos y oídos de un robot',
             'video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
@@ -1278,6 +1310,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 10,
             'lesson_id' => $lesson11->id,
+            'order' => 3,
             'character' => 'robot',
             'story' => 'Los motores son los músculos del robot. Descubre cómo funcionan',
             'content' => '
@@ -1304,14 +1337,6 @@ class ExerciseSeeder extends Seeder
                         <li style="margin-bottom: 0.5rem;">Ejemplo: la cabeza de un robot que gira</li>
                     </ul>
 
-                    <h4 style="font-size: 1.15rem; font-weight: bold; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #374151;">3. Motor Paso a Paso 👣</h4>
-                    <p style="line-height: 1.7; margin-bottom: 0.75rem;">El más preciso:</p>
-                    <ul style="line-height: 1.8; margin-bottom: 1.5rem; padding-left: 1.5rem;">
-                        <li style="margin-bottom: 0.5rem;">Se mueve en pasos pequeños y exactos</li>
-                        <li style="margin-bottom: 0.5rem;">Perfecto para impresoras 3D</li>
-                        <li style="margin-bottom: 0.5rem;">Usado cuando necesitas precisión extrema</li>
-                    </ul>
-
                     <div style="background: #fff3e0; padding: 20px; border-radius: 10px; margin-top: 30px;">
                         <strong style="color: #e65100;">🔧 Proyecto Práctico:</strong><br>
                         <span style="color: #1f2937;">¿Cómo harías que un robot camine por un laberinto? Necesitarías:<br>
@@ -1334,6 +1359,7 @@ class ExerciseSeeder extends Seeder
             'difficulty' => 'easy',
             'points' => 15,
             'lesson_id' => $lesson11->id,
+            'order' => 4,
             'character' => 'robot',
             'story' => 'La programación es lo que le da vida a un robot. Mira cómo se hace',
             'video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
