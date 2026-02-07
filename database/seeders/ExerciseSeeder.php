@@ -162,7 +162,7 @@ class ExerciseSeeder extends Seeder
             'description' => 'Haz que el perrito ladre 3 veces',
             'instructions' => 'Usa un bucle que repita Guau 3 veces',
             'toolbox' => json_encode(['loops', 'text']),
-            'expected_result' => '3',
+            'expected_result' => 'Guau Guau Guau', //MOD
             'difficulty' => 'easy',
             'points' => 15,
             'lesson_id' => $lesson2->id,
@@ -178,7 +178,7 @@ class ExerciseSeeder extends Seeder
             'description' => 'El perrito da 5 vueltas al parque',
             'instructions' => 'Usa un bloque de repetición repetir 5 veces con un mensaje dentro',
             'toolbox' => json_encode(['loops', 'text', 'logic']),
-            'expected_result' => '5',
+            'expected_result' => '5', //MOD
             'difficulty' => 'medium',
             'points' => 20,
             'lesson_id' => $lesson2->id,
@@ -191,10 +191,10 @@ class ExerciseSeeder extends Seeder
 
         Exercise::create([
             'title' => 'Está Lloviendo',
-            'description' => 'Si llueve, el perrito se queda en casa. Si no, sale a jugar',
+            'description' => 'Si llueve, el perrito se queda en "casa". Si no a "jugar"',
             'instructions' => 'Usa un bloque SI/ENTONCES para tomar una decisión',
             'toolbox' => json_encode(['logic', 'text']),
-            'expected_result' => 'casa',
+            'expected_result' => 'casa', //VER
             'difficulty' => 'medium',
             'points' => 20,
             'lesson_id' => $lesson2->id,
@@ -242,7 +242,7 @@ class ExerciseSeeder extends Seeder
             'description' => 'El perrito salta 8 veces',
             'instructions' => 'Usa un bucle que repita salto 8 veces',
             'toolbox' => json_encode(['loops', 'text']),
-            'expected_result' => '8',
+            'expected_result' => '8', //MOD
             'difficulty' => 'easy',
             'points' => 15,
             'lesson_id' => $lesson2->id,
