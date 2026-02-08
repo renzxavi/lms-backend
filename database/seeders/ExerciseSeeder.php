@@ -48,7 +48,7 @@ class ExerciseSeeder extends Seeder
             'order' => 2,
             'character' => 'cat',
             'story' => 'El gatito quiere saludar a todos sus amigos. ¿Le ayudas?',
-            'help_video_url' => 'https://www.youtube.com/embed/eT7i6JSIPmI',
+            'help_video_url' => 'https://www.youtube.com/embed/5i1hyYyqq9Y',
             'help_text' => 'Busca el bloque de imprimir en la caja de herramientas. Arrastra ese bloque al área de trabajo y escribe el mensaje dentro. No olvides las palabras exactas que el gatito quiere decir'
         ]);
 
@@ -64,7 +64,7 @@ class ExerciseSeeder extends Seeder
             'order' => 3,
             'character' => 'cat',
             'story' => 'El gatito vio 3 ratones en la cocina y 2 en el jardín. ¿Cuántos son en total?',
-            'help_video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            'help_video_url' => 'https://www.youtube.com/embed/Qa4i9S185HY',
             'help_text' => 'Necesitas usar un bloque de matemáticas para sumar. Busca el bloque que tiene el símbolo más y coloca los números 3 y 2. Luego, imprime el resultado para ver cuántos ratones hay en total'
         ]);
 
@@ -80,7 +80,7 @@ class ExerciseSeeder extends Seeder
             'order' => 4,
             'character' => 'cat',
             'story' => 'El gatito se llama Michi. Vamos a guardar su nombre',
-            'help_video_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            'help_video_url' => 'https://www.youtube.com/embed/FVUx6yjR9YA',
             'help_text' => 'Crea una variable, nómbrala nombre y asígnale el texto Michi. Luego imprime esa variable'
         ]);
 
@@ -96,7 +96,7 @@ class ExerciseSeeder extends Seeder
             'order' => 5,
             'character' => 'cat',
             'story' => 'Michi tiene 2 años, pero hoy es su cumpleaños',
-            'help_video_url' => null,
+            'help_video_url' => 'https://www.youtube.com/embed/QLuZ0_G7EXE',
             'help_text' => 'Crea una variable edad = 2. Luego cámbiala a edad + 1 e imprime el resultado'
         ]);
 
@@ -112,7 +112,7 @@ class ExerciseSeeder extends Seeder
             'order' => 6,
             'character' => 'cat',
             'story' => 'Ayuda al gatito a contar sus juguetes',
-            'help_video_url' => null,
+            'help_video_url' => 'https://www.youtube.com/embed/43GDkeqNMhI',
             'help_text' => 'Usa el bloque de resta. 5 - 2 = ?'
         ]);
 
@@ -128,7 +128,7 @@ class ExerciseSeeder extends Seeder
             'order' => 7,
             'character' => 'cat',
             'story' => 'El gatito quiere decir su nombre completo',
-            'help_video_url' => null,
+            'help_video_url' => 'https://www.youtube.com/embed/RWejWr50fhQ',
             'help_text' => 'Une Miau más espacio más Michi'
         ]);
 
@@ -331,7 +331,7 @@ class ExerciseSeeder extends Seeder
             'description' => '23 presas entre 5 leones. ¿Cuántas sobran?',
             'instructions' => 'Usa el operador módulo para encontrar el resto',
             'toolbox' => json_encode(['math', 'text']),
-            'expected_result' => '3',
+            'expected_result' => '3',//Eliminar
             'difficulty' => 'medium',
             'points' => 25,
             'lesson_id' => $lesson3->id,
@@ -370,7 +370,7 @@ class ExerciseSeeder extends Seeder
             'order' => 7,
             'character' => 'lion',
             'story' => 'El león se hace más fuerte',
-            'help_video_url' => null,
+            'help_video_url' => null, //SIN VIDEO OK
             'help_text' => '6 × 2 = ?'
         ]);
 
@@ -452,7 +452,7 @@ class ExerciseSeeder extends Seeder
             'description' => 'Invierte el valor de verdadero',
             'instructions' => 'Usa el operador NOT',
             'toolbox' => json_encode(['logic', 'text']),
-            'expected_result' => 'false',
+            'expected_result' => 'false', //ELIMINAR O CAMBIAR
             'difficulty' => 'medium',
             'points' => 20,
             'lesson_id' => $lesson4->id,
@@ -468,7 +468,7 @@ class ExerciseSeeder extends Seeder
             'description' => 'Imprime solo los números pares del 2 al 10',
             'instructions' => 'Usa un bucle y una condición para filtrar pares',
             'toolbox' => json_encode(['loops', 'logic', 'math', 'variables', 'text']),
-            'expected_result' => '10',
+            'expected_result' => '10', //VER O CAMBIAR
             'difficulty' => 'hard',
             'points' => 30,
             'lesson_id' => $lesson4->id,
@@ -484,7 +484,7 @@ class ExerciseSeeder extends Seeder
             'description' => 'Genera los primeros 5 números: 1,1,2,3,5',
             'instructions' => 'Usa variables y bucles para generar la secuencia',
             'toolbox' => json_encode(['loops', 'variables', 'math', 'text']),
-            'expected_result' => '5',
+            'expected_result' => '5', //VER O CAMBIAR
             'difficulty' => 'hard',
             'points' => 35,
             'lesson_id' => $lesson4->id,
